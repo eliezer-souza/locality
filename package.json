@@ -1,0 +1,26 @@
+{
+  "name": "locality",
+  "private": true,
+  "author": {
+    "name": "Eliezer Souza",
+    "email": "vnny77@hotmail.com",
+    "url": "https://github.com/eliezer-souza"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliezer-souza/locality.git"
+  },
+  "homepage": "https://github.com/eliezer-souza/locality#readme",
+  "bugs": {
+    "url": "https://github.com/eliezer-souza/locality/issues"
+  },
+  "scripts": {
+    "postinstall": "lerna bootstrap --progress",
+    "test": "lerna run test --scope=@locality/server",
+    "commit": "npx git-cz"
+  },
+  "devDependencies": {
+    "lerna": "^3.15.0"
+  }
+}
