@@ -1,9 +1,9 @@
 import { hashSync } from 'bcryptjs';
-import Email from 'Domain/User/ValueObjects/Email';
-import Name from 'Domain/User/ValueObjects/Name';
-import Entity from 'Shared/Entities/Entity';
+import { Email } from 'Domain/User/ValueObjects/Email';
+import { Name } from 'Domain/User/ValueObjects/Name';
+import { Entity } from 'Shared/Entities/Entity';
 
-export default class User extends Entity {
+export class User extends Entity {
   private _name: Name;
   private _email: Email;
   private _password: string;

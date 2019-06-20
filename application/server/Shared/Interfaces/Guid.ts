@@ -1,6 +1,6 @@
 import uuid from 'uuid/v4';
 
-export default class Guid {
+export class Guid {
   public create(): string {
     return uuid()
       .replace('-', '')

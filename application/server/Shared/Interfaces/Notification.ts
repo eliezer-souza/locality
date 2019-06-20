@@ -5,7 +5,7 @@ interface INotification {
   message: string[];
 }
 
-export default abstract class Notification {
+export abstract class Notification {
   private _notifications: INotification = { error: false, message: [] };
 
   get notifications() {

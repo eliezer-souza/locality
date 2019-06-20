@@ -1,7 +1,7 @@
 import { IsEmail } from 'class-validator';
-import ValueObject from 'Shared/ValueObjects/ValueObject';
+import { ValueObject } from 'Shared/ValueObjects/ValueObject';
 
-export default class Email extends ValueObject {
+export class Email extends ValueObject {
   @IsEmail()
   private _address: string;
 

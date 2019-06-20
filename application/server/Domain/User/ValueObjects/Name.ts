@@ -1,7 +1,7 @@
 import { IsString, MaxLength } from 'class-validator';
-import ValueObject from 'Shared/ValueObjects/ValueObject';
+import { ValueObject } from 'Shared/ValueObjects/ValueObject';
 
-export default class Name extends ValueObject {
+export class Name extends ValueObject {
   @IsString()
   @MaxLength(15)
   private _firstName: string;
