@@ -9,5 +9,6 @@ module.exports = {
   moduleNameMapper: {
     'Domain/(.*)': '<rootDir>/Domain/$1',
     'Shared/(.*)': '<rootDir>/Shared/$1',
+    'Tests/(.*)': '<rootDir>/Tests/$1',
   },
 };

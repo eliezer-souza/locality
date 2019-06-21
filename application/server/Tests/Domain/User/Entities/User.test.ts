@@ -1,6 +1,6 @@
-import User from 'Domain/User/Entities/User';
-import Email from 'Domain/User/ValueObjects/Email';
-import Name from 'Domain/User/ValueObjects/Name';
+import { User } from 'Domain/User/Entities/User';
+import { Email } from 'Domain/User/ValueObjects/Email';
+import { Name } from 'Domain/User/ValueObjects/Name';
 
 describe('test of entity user', () => {
   it('should be create user with success', () => {
