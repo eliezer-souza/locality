@@ -18,6 +18,7 @@
   "scripts": {
     "postinstall": "lerna bootstrap --progress",
     "test": "lerna run test --scope=@locality/server",
+    "dev:server": "lerna run dev --scope=@locality/server",
     "commit": "npx git-cz"
   },
   "devDependencies": {

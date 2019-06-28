@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "lib": ["es2015"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "outDir": "build",
+    "baseUrl": ".",
+    "downlevelIteration": true,
+    "paths": {
+      "src/*": ["src/*"],
+      "api/*": ["src/api/*"],
+      "constants/*": ["src/api/constants/*"],
+      "domain/*": ["src/domain/*"],
+      "infra/*": ["src/infra/*"],
+      "middlewares/*": ["src/api/middlewares/*"],
+      "shared/*": ["src/shared/*"],
+      "utils/*": ["src/api/utils/*"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
