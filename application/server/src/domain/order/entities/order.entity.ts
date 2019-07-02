@@ -46,8 +46,8 @@ export class Order extends Entity {
       ? (this.recipientEmail = recipientEmail)
       : this.addNotification(recipientEmail.notifications);
 
-    this.dateExpectedDelivery = dateExpectedDelivery;
-    this.dateDelivery = dateDelivery;
+    this.dateExpectedDelivery = new Date(dateExpectedDelivery);
+    this.dateDelivery = new Date(dateDelivery);
   }
 
   public data(): IOrder {
