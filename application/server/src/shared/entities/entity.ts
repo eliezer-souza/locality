@@ -3,6 +3,7 @@ import { Notification } from 'shared/interfaces/notification';
 
 export abstract class Entity extends Notification {
   public id: string;
+  public abstract data(): any;
 
   constructor() {
     super();
