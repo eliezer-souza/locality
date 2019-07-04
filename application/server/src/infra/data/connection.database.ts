@@ -6,7 +6,7 @@ const { log } = console;
 async function connection() {
   log('Trying connection with MongoDB');
 
-  await mongoose.connect('mongodb://localhost:17017/locality', {
+  await mongoose.connect(`${process.env.MONGO_DATABASE_URL}`, {
     useCreateIndex: true,
     useNewUrlParser: true,
   });
