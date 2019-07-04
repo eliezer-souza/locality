@@ -1,4 +1,3 @@
-import { Email } from 'domain/order/value-objects/email.value-object';
 import { Command } from 'shared/commands/command';
 
 export class CreateOrderCommand extends Command {

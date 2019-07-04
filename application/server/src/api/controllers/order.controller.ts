@@ -7,12 +7,12 @@ import { autoInjectable, inject } from 'tsyringe';
 
 @autoInjectable()
 export class OrderController {
-  private readonly handler: OrderHandler;
+  private readonly _handler: OrderHandler;
 
   constructor(
     @inject(Identifier.ORDER_HANDLER) private orderHandler?: OrderHandler,
   ) {
-    this.handler = orderHandler;
+    this._handler = orderHandler;
   }
 
   create = async (
@@ -37,7 +37,7 @@ export class OrderController {
         dateDelivery,
       );
 
-      const order = await this.handler.handle(command);
+      const order = await this._handler.handle(command);
 
       if (!order.success) {
         return response.status(httpStatusCode.BAD_REQUEST).send(order);
