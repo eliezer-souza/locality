@@ -18,7 +18,7 @@ export abstract class Notification {
     if (errors.length > 0) {
       const message = errors
         .map(error =>
-          Object.keys(error.constraints).map(key => error.constraints[key])
+          Object.keys(error.constraints).map(key => error.constraints[key]),
         )
         .join(', ');
 
