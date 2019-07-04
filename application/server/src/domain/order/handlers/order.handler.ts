@@ -1,7 +1,7 @@
 import { CreateOrderCommand } from 'domain/order/commands/create-order.command';
 import { Order } from 'domain/order/entities/order.entity';
 import { IOrderRepository } from 'domain/order/repositories/iorder.repository';
-import { Email } from 'domain/user/value-objects/email.value-object';
+import { Email } from 'domain/order/value-objects/email.value-object';
 import { Identifier } from 'infra/cross-cutting/identifiers';
 import { CommandResult } from 'shared/interfaces/command-result';
 import { IResponse } from 'shared/interfaces/response';
