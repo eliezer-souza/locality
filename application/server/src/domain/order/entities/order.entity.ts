@@ -29,7 +29,6 @@ export class Order extends Entity {
 
   @IsDate()
   private readonly dateDelivery: Date;
-  private readonly idLocalition: string;
 
   constructor(
     code: string,
