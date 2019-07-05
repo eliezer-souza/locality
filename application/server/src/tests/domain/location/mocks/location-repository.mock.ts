@@ -1,4 +1,4 @@
-import { ILocation } from 'domain/location/entities/location.entity';
+import { ILocation } from 'domain/location/entities/ilocation-entity.interface';
 import { ILocationRepository } from 'domain/location/repositories/ilocation.repository';
 import { IResponse } from 'shared/interfaces/response';
 

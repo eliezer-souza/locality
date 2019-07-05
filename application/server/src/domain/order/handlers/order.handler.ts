@@ -7,10 +7,11 @@ import { CommandResult } from 'shared/interfaces/command-result';
 import { IResponse } from 'shared/interfaces/response';
 import { autoInjectable, inject, singleton } from 'tsyringe';
 import { Status } from '../value-objects/status.value-object';
+import { IOrderHandler } from './iorder-handler.interface';
 
 @singleton()
 @autoInjectable()
-export class OrderHandler {
+export class OrderHandler implements IOrderHandler {
   private _orderRepository: IOrderRepository;
 
   constructor(

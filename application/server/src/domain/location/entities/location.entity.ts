@@ -1,13 +1,6 @@
+import { ILocation } from 'domain/location/entities/ilocation-entity.interface';
 import { Place } from 'domain/location/value-objects/place.value-object';
 import { Entity } from 'shared/entities/entity';
-
-export interface ILocation {
-  id: string;
-  currentPlace: object;
-  originPlace: object;
-  destinationPlace: object;
-  idOrder: string;
-}
 
 export class Location extends Entity {
   private readonly currentPlace: Place;

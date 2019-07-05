@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsNumber, IsString, MaxLength } from 'class-validator';
-import { ValueObject } from 'src/shared/value-objects/value-object';
+import { ValueObject } from 'shared/value-objects/value-object';
 
 export class Place extends ValueObject {
   @IsNotEmpty()

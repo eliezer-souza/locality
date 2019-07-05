@@ -1,5 +1,6 @@
 import { CreateLocationCommand } from 'domain/location/commands/create-location.command';
 import { Location } from 'domain/location/entities/location.entity';
+import { ILocationHandler } from 'domain/location/handlers/ilocation-handler.interface';
 import { ILocationRepository } from 'domain/location/repositories/ilocation.repository';
 import { Place } from 'domain/location/value-objects/place.value-object';
 import { Identifier } from 'infra/cross-cutting/identifiers';
@@ -9,7 +10,7 @@ import { autoInjectable, inject, singleton } from 'tsyringe';
 
 @singleton()
 @autoInjectable()
-export class LocationHandler {
+export class LocationHandler implements ILocationHandler {
   private readonly _locationRepository: ILocationRepository;
 
   constructor(

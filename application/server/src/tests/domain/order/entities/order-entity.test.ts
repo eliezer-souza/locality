@@ -1,6 +1,6 @@
 import { Order } from 'domain/order/entities/order.entity';
 import { Email } from 'domain/order/value-objects/email.value-object';
-import { Status } from 'src/domain/order/value-objects/status.value-object';
+import { Status } from 'domain/order/value-objects/status.value-object';
 
 describe('test of entity order', () => {
   it('should be create order with success', () => {

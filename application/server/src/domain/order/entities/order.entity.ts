@@ -1,16 +1,8 @@
 import { IsDate, IsNotEmpty, IsString, MaxLength } from 'class-validator';
+import { IOrder } from 'domain/order/entities/iorder-entity.interface';
 import { Email } from 'domain/order/value-objects/email.value-object';
 import { Status } from 'domain/order/value-objects/status.value-object';
 import { Entity } from 'shared/entities/entity';
-
-export interface IOrder {
-  id: string;
-  code: string;
-  description: string;
-  recipientEmail: string;
-  deliveryDate: Date;
-  status: string;
-}
 
 export class Order extends Entity {
   @IsNotEmpty()

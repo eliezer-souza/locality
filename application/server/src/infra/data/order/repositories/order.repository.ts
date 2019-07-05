@@ -1,4 +1,4 @@
-import { IOrder } from 'domain/order/entities/order.entity';
+import { IOrder } from 'domain/order/entities/iorder-entity.interface';
 import { IOrderRepository } from 'domain/order/repositories/iorder.repository';
 import { OrderSchema } from 'infra/data/order/schemas/order.schema';
 import { IResponse } from 'shared/interfaces/response';
