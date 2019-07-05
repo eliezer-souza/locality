@@ -4,21 +4,21 @@ import { Entity } from 'shared/entities/entity';
 export interface ILocation {
   id: string;
   currentPlace: object;
-  startingPlace: object;
-  finalPlace: object;
+  originPlace: object;
+  destinationPlace: object;
   idOrder: string;
 }
 
 export class Location extends Entity {
   private readonly currentPlace: Place;
-  private readonly startingPlace: Place;
-  private readonly finalPlace: Place;
+  private readonly originPlace: Place;
+  private readonly destinationPlace: Place;
   private readonly idOrder: string;
 
   constructor(
     currentPlace: Place,
-    startingPlace: Place,
-    finalPlace: Place,
+    originPlace: Place,
+    destinationPlace: Place,
     idOrder: string,
   ) {
     super();
@@ -27,13 +27,13 @@ export class Location extends Entity {
       ? (this.currentPlace = currentPlace)
       : this.addNotification(currentPlace.notifications);
 
-    startingPlace.isValid()
-      ? (this.startingPlace = startingPlace)
-      : this.addNotification(startingPlace.notifications);
+    originPlace.isValid()
+      ? (this.originPlace = originPlace)
+      : this.addNotification(originPlace.notifications);
 
-    finalPlace.isValid()
-      ? (this.finalPlace = finalPlace)
-      : this.addNotification(finalPlace.notifications);
+    destinationPlace.isValid()
+      ? (this.destinationPlace = destinationPlace)
+      : this.addNotification(destinationPlace.notifications);
 
     this.idOrder = idOrder;
   }
@@ -42,8 +42,8 @@ export class Location extends Entity {
     return {
       id: this.id,
       currentPlace: this.currentPlace.toJson(),
-      startingPlace: this.startingPlace.toJson(),
-      finalPlace: this.finalPlace.toJson(),
+      originPlace: this.originPlace.toJson(),
+      destinationPlace: this.destinationPlace.toJson(),
       idOrder: this.idOrder,
     };
   }

@@ -51,7 +51,7 @@ const Location = new mongoose.Schema({
       required: true,
     },
   },
-  startingPlace: {
+  originPlace: {
     latitude: {
       type: Number,
       required: true,
@@ -73,7 +73,7 @@ const Location = new mongoose.Schema({
       required: true,
     },
   },
-  finalPlace: {
+  destinationPlace: {
     latitude: {
       type: Number,
       required: true,

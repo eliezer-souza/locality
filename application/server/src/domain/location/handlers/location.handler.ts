@@ -27,7 +27,7 @@ export class LocationHandler {
       );
     }
 
-    const startingPlace = new Place(
+    const originPlace = new Place(
       command.latitude,
       command.longitude,
       command.city,
@@ -43,7 +43,7 @@ export class LocationHandler {
       command.country,
     );
 
-    const finalPlace = new Place(
+    const destinationPlace = new Place(
       command.latitudeFinal,
       command.longitudeFinal,
       command.cityFinal,
@@ -53,8 +53,8 @@ export class LocationHandler {
 
     const location = new Location(
       currentPlace,
-      startingPlace,
-      finalPlace,
+      originPlace,
+      destinationPlace,
       command.idOrder,
     );
 
