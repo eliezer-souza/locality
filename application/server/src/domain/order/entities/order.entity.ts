@@ -1,5 +1,6 @@
 import { IsDate, IsNotEmpty, IsString, MaxLength } from 'class-validator';
 import { Email } from 'domain/order/value-objects/email.value-object';
+import { Status } from 'domain/order/value-objects/status.value-object';
 import { Entity } from 'shared/entities/entity';
 
 export interface IOrder {
@@ -7,8 +8,8 @@ export interface IOrder {
   code: string;
   description: string;
   recipientEmail: string;
-  dateExpectedDelivery: Date;
-  dateDelivery: Date;
+  deliveryDate: Date;
+  status: string;
 }
 
 export class Order extends Entity {
@@ -25,17 +26,16 @@ export class Order extends Entity {
   private readonly recipientEmail: Email;
 
   @IsDate()
-  private readonly dateExpectedDelivery: Date;
+  private readonly deliveryDate: Date;
 
-  @IsDate()
-  private readonly dateDelivery: Date;
+  private readonly status: Status;
 
   constructor(
     code: string,
     description: string,
     recipientEmail: Email,
-    dateExpectedDelivery: Date,
-    dateDelivery: Date,
+    deliveryDate: Date,
+    status: Status,
   ) {
     super();
     this.code = code;
@@ -45,18 +45,21 @@ export class Order extends Entity {
       ? (this.recipientEmail = recipientEmail)
       : this.addNotification(recipientEmail.notifications);
 
-    this.dateExpectedDelivery = new Date(dateExpectedDelivery);
-    this.dateDelivery = new Date(dateDelivery);
+    this.deliveryDate = new Date(deliveryDate);
+
+    status.isValid()
+      ? (this.status = status)
+      : this.addNotification(status.notifications);
   }
 
-  public data(): IOrder {
+  public json(): IOrder {
     return {
       id: this.id,
       code: this.code,
       description: this.description,
       recipientEmail: this.recipientEmail.address,
-      dateExpectedDelivery: this.dateExpectedDelivery,
-      dateDelivery: this.dateDelivery,
+      deliveryDate: this.deliveryDate,
+      status: this.status.status,
     };
   }
 }

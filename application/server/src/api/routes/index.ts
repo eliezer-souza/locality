@@ -25,6 +25,6 @@ export class Routes {
   registeringRoutes() {
     this.router.get('/api/hc', (req, res) => res.send('OK'));
     this.router.use('/api/orders', this.orders.router);
-    this.router.use('/api/location', this.location.router);
+    this.router.use('/api/locations', this.location.router);
   }
 }

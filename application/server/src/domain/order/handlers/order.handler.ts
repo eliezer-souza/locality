@@ -6,6 +6,7 @@ import { Identifier } from 'infra/cross-cutting/identifiers';
 import { CommandResult } from 'shared/interfaces/command-result';
 import { IResponse } from 'shared/interfaces/response';
 import { autoInjectable, inject, singleton } from 'tsyringe';
+import { Status } from '../value-objects/status.value-object';
 
 @singleton()
 @autoInjectable()
@@ -21,20 +22,21 @@ export class OrderHandler {
 
   public async handle(command: CreateOrderCommand): Promise<IResponse> {
     const recipientEmail = new Email(command.recipientEmail);
+    const status = new Status(command.status);
 
     const order = new Order(
       command.code,
       command.description,
       recipientEmail,
-      command.dateExpectedDelivery,
-      command.dateDelivery,
+      command.deliveryDate,
+      status,
     );
 
     if (!order.isValid()) {
       return new CommandResult(false, order.notifications.message.join(', '));
     }
 
-    const response = await this._orderRepository.createOrder(order.data());
+    const response = await this._orderRepository.createOrder(order.json());
 
     if (!response.success) {
       return new CommandResult(false, response.message);

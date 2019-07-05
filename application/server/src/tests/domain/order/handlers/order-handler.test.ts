@@ -12,7 +12,7 @@ describe('Test of handler order', () => {
       'steel ax delivery',
       'bjorn@vikings.com',
       new Date('2019-07-02'),
-      new Date('2019-07-02'),
+      'progress',
     );
 
     const created = await handler.handle(command);

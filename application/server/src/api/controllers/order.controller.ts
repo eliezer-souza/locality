@@ -25,16 +25,16 @@ export class OrderController {
         code,
         description,
         recipientEmail,
-        dateExpectedDelivery,
-        dateDelivery,
+        deliveryDate,
+        status,
       } = request.body;
 
       const command = new CreateOrderCommand(
         code,
         description,
         recipientEmail,
-        dateExpectedDelivery,
-        dateDelivery,
+        deliveryDate,
+        status,
       );
 
       const order = await this._handler.handle(command);

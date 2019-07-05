@@ -66,7 +66,7 @@ export class LocationHandler {
     }
 
     const response = await this._locationRepository.createLocation(
-      location.data(),
+      location.json(),
     );
 
     if (!response.success) {

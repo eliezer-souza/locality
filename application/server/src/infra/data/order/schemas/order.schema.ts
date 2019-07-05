@@ -18,17 +18,14 @@ const Order = new mongoose.Schema({
     type: String,
     required: true,
   },
-  dateExpectedDelivery: {
+  deliveryDate: {
     type: Date,
     required: true,
   },
-  dateDelivery: {
-    type: Date,
-    required: true,
-  },
-  idLocalition: {
+  status: {
     type: String,
-    required: false,
+    required: true,
+    enum: ['progress', 'delivered'],
   },
 });
 

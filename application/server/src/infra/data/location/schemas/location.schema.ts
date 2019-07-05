@@ -103,4 +103,4 @@ const Location = new mongoose.Schema({
   history: [HistorySchema],
 });
 
-export const LocationSchema = mongoose.model('location', Location);
+export const LocationSchema = mongoose.model('locations', Location);

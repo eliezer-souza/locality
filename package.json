@@ -19,9 +19,22 @@
     "postinstall": "lerna bootstrap --progress",
     "test": "lerna run test --scope=@locality/server",
     "dev:server": "lerna run dev --scope=@locality/server",
-    "commit": "npx git-cz"
+    "lint": "lerna run lint"
   },
   "devDependencies": {
-    "lerna": "^3.15.0"
+    "lerna": "^3.15.0",
+    "husky": "^3.0.0",
+    "lint-staged": "^9.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run lint",
+      "npm run test"
+    ]
   }
 }

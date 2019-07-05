@@ -38,7 +38,7 @@ export class Location extends Entity {
     this.idOrder = idOrder;
   }
 
-  public data(): ILocation {
+  public json(): ILocation {
     return {
       id: this.id,
       currentPlace: this.currentPlace.toJson(),
