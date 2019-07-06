@@ -11,7 +11,11 @@ export class LocationRepository implements ILocationRepository {
       const locationCreated = await LocationSchema.create(location);
       await locationCreated.save();
 
-      return { success: true };
+      return {
+        success: true,
+        message: 'Location created with success',
+        data: { id: locationCreated.id },
+      };
     } catch (error) {
       return { success: false, message: error };
     }

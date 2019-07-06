@@ -11,7 +11,11 @@ export class OrderRepository implements IOrderRepository {
       const orderCreated = await OrderSchema.create(order);
       await orderCreated.save();
 
-      return { success: true };
+      return {
+        success: true,
+        message: 'Order created with success',
+        data: { id: orderCreated.id },
+      };
     } catch (error) {
       return { success: false, message: error };
     }

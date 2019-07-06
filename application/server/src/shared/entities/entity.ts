@@ -2,7 +2,7 @@ import { Guid } from 'shared/interfaces/guid';
 import { Notification } from 'shared/interfaces/notification';
 
 export abstract class Entity extends Notification {
-  public id: string;
+  public readonly id: string;
   public abstract json(): any;
 
   constructor() {

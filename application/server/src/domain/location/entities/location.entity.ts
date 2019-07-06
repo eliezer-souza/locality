@@ -1,3 +1,4 @@
+import { IsNotEmpty, IsString } from 'class-validator';
 import { ILocation } from 'domain/location/entities/ilocation-entity.interface';
 import { Place } from 'domain/location/value-objects/place.value-object';
 import { Entity } from 'shared/entities/entity';
@@ -6,6 +7,9 @@ export class Location extends Entity {
   private readonly currentPlace: Place;
   private readonly originPlace: Place;
   private readonly destinationPlace: Place;
+
+  @IsNotEmpty()
+  @IsString()
   private readonly idOrder: string;
 
   constructor(

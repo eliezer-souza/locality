@@ -8,7 +8,7 @@ import { autoInjectable, inject } from 'tsyringe';
 export class Routes {
   public readonly router: Router;
   private readonly orders: OrderRouter;
-  private readonly location: LocationRouter;
+  private readonly locations: LocationRouter;
 
   constructor(
     @inject(Identifier.ORDER_ROUTER) private orderRouter?: OrderRouter,
@@ -17,7 +17,7 @@ export class Routes {
     this.router = Router();
 
     this.orders = orderRouter;
-    this.location = locationRouter;
+    this.locations = locationRouter;
 
     this.registeringRoutes();
   }
@@ -25,6 +25,6 @@ export class Routes {
   registeringRoutes() {
     this.router.get('/api/hc', (req, res) => res.send('OK'));
     this.router.use('/api/orders', this.orders.router);
-    this.router.use('/api/locations', this.location.router);
+    this.router.use('/api/locations', this.locations.router);
   }
 }

@@ -74,6 +74,6 @@ export class LocationHandler implements ILocationHandler {
       return new CommandResult(false, response.message);
     }
 
-    return new CommandResult(true, 'Location created with success');
+    return new CommandResult(true, response.message, response.data);
   }
 }

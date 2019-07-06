@@ -6,11 +6,7 @@ interface INotification {
 }
 
 export abstract class Notification {
-  private _notifications: INotification = { error: false, message: [] };
-
-  get notifications() {
-    return this._notifications;
-  }
+  public readonly notifications: INotification = { error: false, message: [] };
 
   private validate() {
     const errors = validateSync(this);
@@ -22,19 +18,19 @@ export abstract class Notification {
         )
         .join(', ');
 
-      this._notifications.error = true;
-      this._notifications.message.push(message);
+      this.notifications.error = true;
+      this.notifications.message.push(message);
     }
   }
 
   isValid(): boolean {
     this.validate();
 
-    return !this._notifications.error;
+    return !this.notifications.error;
   }
 
   addNotification(notification: INotification) {
-    this._notifications.error = notification.error;
-    this._notifications.message.push(...notification.message);
+    this.notifications.error = notification.error;
+    this.notifications.message.push(...notification.message);
   }
 }
