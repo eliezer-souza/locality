@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://github.com/eliezer-souza/locality"><img src="https://i.imgur.com/s9K5rgx.png" /></a>
+  <a href="https://github.com/eliezer-souza/locality"><img src="https://i.imgur.com/DbkX0Ml.jpg" /></a>
 </h1>
 
 🗺️🌎 A platform for tracking your orders
