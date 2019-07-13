@@ -7,18 +7,24 @@ import { Status } from 'domain/order/value-objects/status.value-object';
 import { Identifier } from 'infra/cross-cutting/identifiers';
 import { CommandResult } from 'shared/interfaces/command-result';
 import { IResponse } from 'shared/interfaces/response';
+import { IEmailService } from 'shared/services/iemail.service';
 import { autoInjectable, inject, singleton } from 'tsyringe';
 
 @singleton()
 @autoInjectable()
 export class OrderHandler implements IOrderHandler {
   private _orderRepository: IOrderRepository;
+  private _emailService: IEmailService;
 
   constructor(
     @inject(Identifier.ORDER_REPOSITORY)
     private orderRepository?: IOrderRepository,
+
+    @inject(Identifier.EMAIL_SERVICE)
+    private emailService?: IEmailService,
   ) {
     this._orderRepository = orderRepository;
+    this._emailService = emailService;
   }
 
   public async handle(command: CreateOrderCommand): Promise<IResponse> {
@@ -42,6 +48,14 @@ export class OrderHandler implements IOrderHandler {
     if (!response.success) {
       return new CommandResult(false, response.message);
     }
+
+    await this._emailService.send(
+      command.recipientEmail,
+      'no-reply@locality.com.br',
+      'Pedido',
+      'welcome',
+      response.data,
+    );
 
     return new CommandResult(true, response.message, response.data);
   }
