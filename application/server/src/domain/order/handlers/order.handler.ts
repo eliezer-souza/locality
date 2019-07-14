@@ -52,8 +52,8 @@ export class OrderHandler implements IOrderHandler {
     await this._emailService.send(
       command.recipientEmail,
       'no-reply@locality.com.br',
-      'Pedido',
-      'welcome',
+      'Locality - Pedido cadastrado',
+      'created-order',
       response.data,
     );
 
