@@ -50,15 +50,17 @@ export class OrderHandler implements IOrderHandler {
       return new CommandResult(false, response.message);
     }
 
-    const qrcode = await generateQRCode(response.data);
+    if (process.env.SEND_EMAIL === 'true') {
+      const qrcode = await generateQRCode(response.data);
 
-    await this._emailService.send(
-      command.recipientEmail,
-      'no-reply@locality.com.br',
-      'Locality - Pedido cadastrado',
-      'created-order',
-      { ...response.data, qrcode },
-    );
+      await this._emailService.send(
+        command.recipientEmail,
+        'no-reply@locality.com.br',
+        'Locality - Pedido cadastrado',
+        'created-order',
+        { ...response.data, qrcode },
+      );
+    }
 
     return new CommandResult(true, response.message, response.data);
   }
