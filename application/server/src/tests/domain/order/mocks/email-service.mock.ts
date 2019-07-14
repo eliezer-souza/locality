@@ -1,5 +1,5 @@
+import { IResponse } from 'shared/interfaces/response';
 import { IEmailService } from 'shared/services/iemail.service';
-import { IResponse } from 'src/shared/interfaces/response';
 
 export class FakeEmailService implements IEmailService {
   async send(
