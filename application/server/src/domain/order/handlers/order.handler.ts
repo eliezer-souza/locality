@@ -5,6 +5,7 @@ import { IOrderRepository } from 'domain/order/repositories/iorder.repository';
 import { Email } from 'domain/order/value-objects/email.value-object';
 import { Status } from 'domain/order/value-objects/status.value-object';
 import { Identifier } from 'infra/cross-cutting/identifiers';
+import { generateQRCode } from 'infra/services/qrcode/qrcode.service';
 import { CommandResult } from 'shared/interfaces/command-result';
 import { IResponse } from 'shared/interfaces/response';
 import { IEmailService } from 'shared/services/iemail.service';
@@ -49,12 +50,14 @@ export class OrderHandler implements IOrderHandler {
       return new CommandResult(false, response.message);
     }
 
+    const qrcode = await generateQRCode(response.data);
+
     await this._emailService.send(
       command.recipientEmail,
       'no-reply@locality.com.br',
       'Locality - Pedido cadastrado',
       'created-order',
-      response.data,
+      { ...response.data, qrcode },
     );
 
     return new CommandResult(true, response.message, response.data);

@@ -1,7 +1,7 @@
 import { Identifier } from 'infra/cross-cutting/identifiers';
 import { container } from 'tsyringe';
 
-import { SendgridEmailService } from 'infra/services/email/sendgrid.email';
+import { SendgridEmailService } from 'infra/services/email/sendgrid.service';
 
 import { OrderController } from 'api/controllers/order.controller';
 import { OrderRouter } from 'api/routes/order.router';

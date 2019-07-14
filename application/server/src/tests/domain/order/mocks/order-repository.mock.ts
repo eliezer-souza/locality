@@ -4,6 +4,8 @@ import { IResponse } from 'shared/interfaces/response';
 
 export class FakeOrderRepository implements IOrderRepository {
   createOrder(order: IOrder): Promise<IResponse> {
-    return new Promise(result => result({ success: true }));
+    return new Promise(result =>
+      result({ success: true, data: { id: 'foobar123' } }),
+    );
   }
 }
