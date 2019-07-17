@@ -50,7 +50,9 @@ export class LocationController {
         idOrder,
       );
 
-      const location = await this._locationHandler.handle(command);
+      const location = await this._locationHandler.createLocationHandle(
+        command,
+      );
 
       if (!location.success) {
         return response.status(httpStatusCode.BAD_REQUEST).send(location);

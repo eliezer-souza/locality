@@ -20,7 +20,9 @@ export class LocationHandler implements ILocationHandler {
     this._locationRepository = locationRepository;
   }
 
-  public async handle(command: CreateLocationCommand): Promise<IResponse> {
+  public async createLocationHandle(
+    command: CreateLocationCommand,
+  ): Promise<IResponse> {
     if (await this._locationRepository.orderExists(command.idOrder)) {
       return new CommandResult(
         false,

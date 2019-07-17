@@ -2,5 +2,5 @@ import { CreateLocationCommand } from 'domain/location/commands/create-location.
 import { IResponse } from 'shared/interfaces/response';
 
 export interface ILocationHandler {
-  handle: (command: CreateLocationCommand) => Promise<IResponse>;
+  createLocationHandle: (command: CreateLocationCommand) => Promise<IResponse>;
 }

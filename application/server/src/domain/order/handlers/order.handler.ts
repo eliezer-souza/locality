@@ -28,7 +28,9 @@ export class OrderHandler implements IOrderHandler {
     this._emailService = emailService;
   }
 
-  public async handle(command: CreateOrderCommand): Promise<IResponse> {
+  public async createOrderHandle(
+    command: CreateOrderCommand,
+  ): Promise<IResponse> {
     const recipientEmail = new Email(command.recipientEmail);
     const status = new Status(command.status);
 

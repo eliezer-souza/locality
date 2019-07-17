@@ -21,7 +21,7 @@ describe('test of handler location', () => {
       'foo123',
     );
 
-    const created = await handler.handle(command);
+    const created = await handler.createLocationHandle(command);
 
     expect(created.success).toBe(true);
   });
@@ -42,7 +42,7 @@ describe('test of handler location', () => {
       'location123',
     );
 
-    const created = await handler.handle(command);
+    const created = await handler.createLocationHandle(command);
 
     expect(created.success).toBe(false);
   });

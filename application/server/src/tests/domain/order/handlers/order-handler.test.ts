@@ -19,7 +19,7 @@ describe('Test of handler order', () => {
       'progress',
     );
 
-    const created = await handler.handle(command);
+    const created = await handler.createOrderHandle(command);
 
     expect(created.success).toBe(true);
   });

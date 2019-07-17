@@ -37,7 +37,7 @@ export class OrderController {
         status,
       );
 
-      const order = await this._orderHandler.handle(command);
+      const order = await this._orderHandler.createOrderHandle(command);
 
       if (!order.success) {
         return response.status(httpStatusCode.BAD_REQUEST).send(order);
