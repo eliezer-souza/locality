@@ -7,6 +7,7 @@ import { Identifier } from 'infra/cross-cutting/identifiers';
 import { CommandResult } from 'shared/interfaces/command-result';
 import { IResponse } from 'shared/interfaces/response';
 import { autoInjectable, inject, singleton } from 'tsyringe';
+import { UpdateCurrentLocationCommand } from '../commands/update-location.command';
 
 @singleton()
 @autoInjectable()
@@ -77,5 +78,11 @@ export class LocationHandler implements ILocationHandler {
     }
 
     return new CommandResult(true, response.message, response.data);
+  }
+
+  public async updateCurrentLocationHandle(
+    command: UpdateCurrentLocationCommand,
+  ): Promise<IResponse> {
+    return new CommandResult(true, 'success');
   }
 }

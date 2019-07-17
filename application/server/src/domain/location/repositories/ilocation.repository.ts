@@ -4,4 +4,5 @@ import { IResponse } from 'shared/interfaces/response';
 export interface ILocationRepository {
   createLocation: (location: ILocation) => Promise<IResponse>;
   orderExists: (idOrder: string) => Promise<boolean>;
+  getLocationById: (idLocation: string) => Promise<object>;
 }
