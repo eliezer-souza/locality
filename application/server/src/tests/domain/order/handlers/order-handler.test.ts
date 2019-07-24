@@ -2,7 +2,9 @@ import 'reflect-metadata';
 
 import { CreateOrderCommand } from 'domain/order/commands/create-order.command';
 import { OrderHandler } from 'domain/order/handlers/order.handler';
-import { FakeEmailService } from '../mocks/email-service.mock';
+
+import { FakeEmailService } from '../../../mocks/services/email-service.mock';
+import { FakeQRCodeService } from '../../../mocks/services/qrcode-service.mock';
 import { FakeOrderRepository } from '../mocks/order-repository.mock';
 
 describe('Test of handler order', () => {
@@ -10,6 +12,7 @@ describe('Test of handler order', () => {
     const handler = new OrderHandler(
       new FakeOrderRepository(),
       new FakeEmailService(),
+      new FakeQRCodeService(),
     );
     const command = new CreateOrderCommand(
       '001',

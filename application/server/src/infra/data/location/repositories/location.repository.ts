@@ -1,6 +1,7 @@
 import { ILocation } from 'domain/location/entities/ilocation-entity.interface';
 import { ILocationRepository } from 'domain/location/repositories/ilocation.repository';
 import { LocationSchema } from 'infra/data/location/schemas/location.schema';
+import { OrderSchema } from 'infra/data/order/schemas/order.schema';
 import { IResponse } from 'shared/interfaces/response';
 import { singleton } from 'tsyringe';
 
@@ -67,5 +68,16 @@ export class LocationRepository implements ILocationRepository {
     } catch (error) {
       return { success: false, message: error };
     }
+  }
+
+  public async getInfoOrderById(
+    id: string,
+  ): Promise<{ idOrder: string; recipientEmail: string }> {
+    const { idOrder }: any = await LocationSchema.findOne({ id });
+    const { recipientEmail }: any = await OrderSchema.findOne({
+      id: idOrder,
+    });
+
+    return { idOrder, recipientEmail };
   }
 }

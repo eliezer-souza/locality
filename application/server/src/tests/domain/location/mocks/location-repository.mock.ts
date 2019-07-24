@@ -28,4 +28,12 @@ export class FakeLocationRepository implements ILocationRepository {
   ): Promise<IResponse> {
     return new Promise(result => result({ success: true }));
   }
+
+  getInfoOrderById(
+    id: string,
+  ): Promise<{ idOrder: string; recipientEmail: string }> {
+    return new Promise(result =>
+      result({ idOrder: 'foo', recipientEmail: 'foo@bar.com' }),
+    );
+  }
 }

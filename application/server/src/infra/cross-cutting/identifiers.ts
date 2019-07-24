@@ -2,6 +2,9 @@ export abstract class Identifier {
   // EmailService
   public static readonly EMAIL_SERVICE: any = Symbol.for('EmailService');
 
+  // QRCodeService
+  public static readonly QRCODE_SERVICE: any = Symbol.for('QRCodeService');
+
   // Identifiers of orders
   public static readonly ORDER_REPOSITORY: any = Symbol.for('OrderRepository');
   public static readonly ORDER_HANDLER: any = Symbol.for('OrderHandler');

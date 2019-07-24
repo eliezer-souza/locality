@@ -1,5 +1,10 @@
 import qr from 'qrcode';
+import { IQRCodeService } from 'src/shared/services/iqrcode.service';
+import { singleton } from 'tsyringe';
 
-export async function generateQRCode(value) {
-  return await qr.toDataURL(value);
+@singleton()
+export class QRCodeService implements IQRCodeService {
+  public async generate(value: string): Promise<any> {
+    return await qr.toDataURL(value);
+  }
 }

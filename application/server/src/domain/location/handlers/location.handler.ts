@@ -7,18 +7,30 @@ import { Place } from 'domain/location/value-objects/place.value-object';
 import { Identifier } from 'infra/cross-cutting/identifiers';
 import { CommandResult } from 'shared/interfaces/command-result';
 import { IResponse } from 'shared/interfaces/response';
+import { IEmailService } from 'shared/services/iemail.service';
+import { IQRCodeService } from 'shared/services/iqrcode.service';
 import { autoInjectable, inject, singleton } from 'tsyringe';
 
 @singleton()
 @autoInjectable()
 export class LocationHandler implements ILocationHandler {
   private readonly _locationRepository: ILocationRepository;
+  private readonly _emailService: IEmailService;
+  private readonly _qrcodeService: IQRCodeService;
 
   constructor(
     @inject(Identifier.LOCATION_REPOSITORY)
     private locationRepository?: ILocationRepository,
+
+    @inject(Identifier.EMAIL_SERVICE)
+    private emailService?: IEmailService,
+
+    @inject(Identifier.QRCODE_SERVICE)
+    private qrcodeService?: IQRCodeService,
   ) {
     this._locationRepository = locationRepository;
+    this._emailService = emailService;
+    this._qrcodeService = qrcodeService;
   }
 
   public async createLocationHandle(
@@ -110,6 +122,25 @@ export class LocationHandler implements ILocationHandler {
 
     if (!response.success) {
       return new CommandResult(false, response.message);
+    }
+
+    const order = await this._locationRepository.getInfoOrderById(command.id);
+
+    if (process.env.SEND_EMAIL === 'true') {
+      const { idOrder, recipientEmail } = order;
+      const baseUrl = process.env.BASE_URL_APP;
+
+      const qrcode = await this._qrcodeService.generate(
+        `${baseUrl}${Object.values(idOrder)}`,
+      );
+
+      await this._emailService.send(
+        recipientEmail,
+        'no-reply@locality.com.br',
+        'Locality - Localização atualizada',
+        'update-current-place',
+        { idOrder, qrcode },
+      );
     }
 
     return new CommandResult(true, 'Current place updated with success!');

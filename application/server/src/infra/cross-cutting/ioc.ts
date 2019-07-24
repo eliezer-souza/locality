@@ -2,6 +2,7 @@ import { Identifier } from 'infra/cross-cutting/identifiers';
 import { container } from 'tsyringe';
 
 import { SendgridEmailService } from 'infra/services/email/sendgrid.service';
+import { QRCodeService } from 'infra/services/qrcode/qrcode.service';
 
 import { OrderController } from 'api/controllers/order.controller';
 import { OrderRouter } from 'api/routes/order.router';
@@ -17,6 +18,11 @@ export async function registeringDependencies() {
   // Email Service
   await container.register(Identifier.EMAIL_SERVICE, {
     useClass: SendgridEmailService,
+  });
+
+  // QRCode Service
+  await container.register(Identifier.QRCODE_SERVICE, {
+    useClass: QRCodeService,
   });
 
   // Orders

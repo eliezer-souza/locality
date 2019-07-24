@@ -5,17 +5,18 @@ import { IOrderRepository } from 'domain/order/repositories/iorder.repository';
 import { Email } from 'domain/order/value-objects/email.value-object';
 import { Status } from 'domain/order/value-objects/status.value-object';
 import { Identifier } from 'infra/cross-cutting/identifiers';
-import { generateQRCode } from 'infra/services/qrcode/qrcode.service';
 import { CommandResult } from 'shared/interfaces/command-result';
 import { IResponse } from 'shared/interfaces/response';
 import { IEmailService } from 'shared/services/iemail.service';
+import { IQRCodeService } from 'shared/services/iqrcode.service';
 import { autoInjectable, inject, singleton } from 'tsyringe';
 
 @singleton()
 @autoInjectable()
 export class OrderHandler implements IOrderHandler {
-  private _orderRepository: IOrderRepository;
-  private _emailService: IEmailService;
+  private readonly _orderRepository: IOrderRepository;
+  private readonly _emailService: IEmailService;
+  private readonly _qrcodeService: IQRCodeService;
 
   constructor(
     @inject(Identifier.ORDER_REPOSITORY)
@@ -23,9 +24,13 @@ export class OrderHandler implements IOrderHandler {
 
     @inject(Identifier.EMAIL_SERVICE)
     private emailService?: IEmailService,
+
+    @inject(Identifier.QRCODE_SERVICE)
+    private qrcodeService?: IQRCodeService,
   ) {
     this._orderRepository = orderRepository;
     this._emailService = emailService;
+    this._qrcodeService = qrcodeService;
   }
 
   public async createOrderHandle(
@@ -54,7 +59,7 @@ export class OrderHandler implements IOrderHandler {
 
     if (process.env.SEND_EMAIL === 'true') {
       const baseUrl = process.env.BASE_URL_APP;
-      const qrcode = await generateQRCode(
+      const qrcode = await this._qrcodeService.generate(
         `${baseUrl}${Object.values(response.data)}`,
       );
 
