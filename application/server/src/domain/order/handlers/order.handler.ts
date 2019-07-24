@@ -53,7 +53,10 @@ export class OrderHandler implements IOrderHandler {
     }
 
     if (process.env.SEND_EMAIL === 'true') {
-      const qrcode = await generateQRCode(response.data);
+      const baseUrl = process.env.BASE_URL_APP;
+      const qrcode = await generateQRCode(
+        `${baseUrl}${Object.values(response.data)}`,
+      );
 
       await this._emailService.send(
         command.recipientEmail,
