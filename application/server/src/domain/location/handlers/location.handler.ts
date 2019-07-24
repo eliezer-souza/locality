@@ -1,4 +1,5 @@
 import { CreateLocationCommand } from 'domain/location/commands/create-location.command';
+import { UpdateCurrentPlaceCommand } from 'domain/location/commands/update-current-place.command';
 import { Location } from 'domain/location/entities/location.entity';
 import { ILocationHandler } from 'domain/location/handlers/ilocation-handler.interface';
 import { ILocationRepository } from 'domain/location/repositories/ilocation.repository';
@@ -7,7 +8,6 @@ import { Identifier } from 'infra/cross-cutting/identifiers';
 import { CommandResult } from 'shared/interfaces/command-result';
 import { IResponse } from 'shared/interfaces/response';
 import { autoInjectable, inject, singleton } from 'tsyringe';
-import { UpdateCurrentLocationCommand } from '../commands/update-location.command';
 
 @singleton()
 @autoInjectable()
@@ -80,9 +80,38 @@ export class LocationHandler implements ILocationHandler {
     return new CommandResult(true, response.message, response.data);
   }
 
-  public async updateCurrentLocationHandle(
-    command: UpdateCurrentLocationCommand,
+  public async updateCurrentPlaceHandle(
+    command: UpdateCurrentPlaceCommand,
   ): Promise<IResponse> {
-    return new CommandResult(true, 'success');
+    if (!command.isValid()) {
+      return new CommandResult(
+        false,
+        'Field validation error',
+        command.notifications.message,
+      );
+    }
+
+    const responseHistory = await this._locationRepository.addHistoryLocation(
+      command.id,
+    );
+
+    if (!responseHistory.success) {
+      return new CommandResult(false, responseHistory.message);
+    }
+
+    const response = await this._locationRepository.updateCurrentPlace(
+      command.id,
+      command.latitude,
+      command.longitude,
+      command.city,
+      command.state,
+      command.country,
+    );
+
+    if (!response.success) {
+      return new CommandResult(false, response.message);
+    }
+
+    return new CommandResult(true, 'Current place updated with success!');
   }
 }

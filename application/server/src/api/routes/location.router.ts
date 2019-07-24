@@ -21,5 +21,6 @@ export class LocationRouter {
 
   registeringRoutes() {
     this.router.post('/', this.controller.create);
+    this.router.put('/:id', this.controller.updateCurrentPlace);
   }
 }

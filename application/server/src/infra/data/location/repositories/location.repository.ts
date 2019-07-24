@@ -30,4 +30,42 @@ export class LocationRepository implements ILocationRepository {
 
     return false;
   }
+
+  public async addHistoryLocation(id: string): Promise<IResponse> {
+    try {
+      const { currentPlace }: any = await LocationSchema.findOne({
+        id,
+      });
+
+      await LocationSchema.updateOne(
+        { id },
+        {
+          $push: { history: currentPlace },
+        },
+      );
+
+      return { success: true };
+    } catch (error) {
+      return { success: false, message: error };
+    }
+  }
+
+  public async updateCurrentPlace(
+    id: string,
+    latitude: number,
+    longitude: number,
+    city: string,
+    state: string,
+    country: string,
+  ): Promise<IResponse> {
+    try {
+      const place = { latitude, longitude, city, state, country };
+
+      await LocationSchema.updateOne({ id }, { currentPlace: place });
+
+      return { success: true };
+    } catch (error) {
+      return { success: false, message: error };
+    }
+  }
 }

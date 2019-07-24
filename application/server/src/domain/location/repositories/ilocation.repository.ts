@@ -4,5 +4,13 @@ import { IResponse } from 'shared/interfaces/response';
 export interface ILocationRepository {
   createLocation: (location: ILocation) => Promise<IResponse>;
   orderExists: (idOrder: string) => Promise<boolean>;
-  getLocationById: (idLocation: string) => Promise<object>;
+  addHistoryLocation: (id: string) => Promise<IResponse>;
+  updateCurrentPlace: (
+    id: string,
+    latitude: number,
+    longitude: number,
+    city: string,
+    state: string,
+    country: string,
+  ) => Promise<IResponse>;
 }

@@ -14,4 +14,18 @@ export class FakeLocationRepository implements ILocationRepository {
 
     return new Promise(result => result(false));
   }
+
+  addHistoryLocation(id: string): Promise<IResponse> {
+    return new Promise(result => result({ success: true }));
+  }
+  updateCurrentPlace(
+    id: string,
+    latitude: number,
+    longitude: number,
+    city: string,
+    state: string,
+    country: string,
+  ): Promise<IResponse> {
+    return new Promise(result => result({ success: true }));
+  }
 }
