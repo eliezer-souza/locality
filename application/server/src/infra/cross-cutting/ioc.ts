@@ -12,6 +12,7 @@ import { OrderRepository } from 'infra/data/order/repositories/order.repository'
 import { LocationController } from 'api/controllers/location.controller';
 import { LocationRouter } from 'api/routes/location.router';
 import { LocationCommandHandler } from 'domain/location/handlers/commands/location-command.handler';
+import { OrderQueryHandler } from 'domain/order/handlers/queries/order-query.handler';
 import { LocationRepository } from 'infra/data/location/repositories/location.repository';
 
 export async function registeringDependencies() {
@@ -32,6 +33,10 @@ export async function registeringDependencies() {
 
   await container.register(Identifier.ORDER_COMMAND_HANDLER, {
     useClass: OrderCommandHandler,
+  });
+
+  await container.register(Identifier.ORDER_QUERY_HANDLER, {
+    useClass: OrderQueryHandler,
   });
 
   await container.register(Identifier.ORDER_CONTROLLER, {

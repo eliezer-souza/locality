@@ -20,4 +20,24 @@ export class OrderRepository implements IOrderRepository {
       return { success: false, message: error };
     }
   }
+
+  public async getInfoOrderById(idOrder: string): Promise<IResponse> {
+    try {
+      const {
+        id,
+        code,
+        description,
+        recipientEmail,
+        deliveryDate,
+        status,
+      }: any = await OrderSchema.findOne({ id: idOrder });
+
+      return {
+        success: true,
+        data: { id, code, description, recipientEmail, deliveryDate, status },
+      };
+    } catch (error) {
+      return { success: false, message: error };
+    }
+  }
 }

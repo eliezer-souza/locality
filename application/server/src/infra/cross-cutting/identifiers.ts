@@ -10,6 +10,9 @@ export abstract class Identifier {
   public static readonly ORDER_COMMAND_HANDLER: any = Symbol.for(
     'OrderCommandHandler',
   );
+  public static readonly ORDER_QUERY_HANDLER: any = Symbol.for(
+    'OrderQueryHandler',
+  );
   public static readonly ORDER_CONTROLLER: any = Symbol.for('OrderController');
   public static readonly ORDER_ROUTER: any = Symbol.for('OrderRouter');
 
