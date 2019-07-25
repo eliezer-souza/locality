@@ -20,4 +20,102 @@
       font-family: 'Montserrat', sans-serif;
     }
 
-    </head><body><h1>UPDATE CURRENT PLACE</h1></body></html>
+    .button {
+      height: 32px;
+      background-color: #02bc6d;
+      color: #ffffff;
+      border-radius: 25px;
+      border: none;
+      padding: 0 16px;
+    }
+  </style>
+</head>
+
+<body style="margin: 0; padding: 0; background-color: #f4f4f4">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="height: 100%">
+    <tr>
+      <td>
+        <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+          <tr>
+            <td>
+              <table align="center" border="0" cellpadding="0" cellspacing="0" width="600"
+                style="background-color: #ffffff">
+                <tr>
+                  <td>
+                    <img src="https://i.imgur.com/eJ6YPb3.jpg" alt="logo da locality"
+                      style="height: 150px; width: 370px" />
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 0 50px;">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                      <tr>
+                        <td>
+                          <h1>Olá,</h1>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p>
+                            A localização do seu pedido foi atualizada,
+                            você poderá ver onde o seu pedido se encontra
+                            através da nossa plataforma.
+                          </p>
+                        </td>
+                      </tr>
+                      <tr align="center">
+                        <td>
+                          <p style="margin-top: 30px;">
+                            Código do seu pedido
+                          </p>
+                        </td>
+                      </tr>
+                      <tr align="center">
+                        <td>
+                          <h1 style="margin: 0;">{{ idOrder }}</h1>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p style="margin: 30px 0;">
+                            Para saber onde se encontra seu pedido, basta
+                            copiar o
+                            <strong>código do seu pedido</strong> e acessar
+                            nossa plataforma, ou clique no botão abaixo.
+                          </p>
+                        </td>
+                      </tr>
+                      <tr align="center">
+                        <td>
+                          <a href="http://www.google.com.br/{{ idOrder }}"
+                            style="color: currentColor; text-decoration: none">
+                            <button class="button">Acessar plataforma</button>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p style="margin: 30px 0;">
+                            Ou acesse pelo seu smartphone utilizando o QRCode
+                            abaixo.
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <img src="{{ qrcode }}" alt="QRCode" style="width: 100px; margin-bottom: 30px;" />
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>

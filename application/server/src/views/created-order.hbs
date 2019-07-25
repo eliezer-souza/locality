@@ -20,40 +20,6 @@
       font-family: 'Montserrat', sans-serif;
     }
 
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #f4f4f4;
-    }
-
-    .wrapper {
-      width: 100%;
-      height: 100%;
-      max-width: 600px;
-      background-color: #ffffff;
-    }
-
-    .logo-header-wrapper {
-      width: 600px;
-      height: 150px;
-    }
-
-    .logo-header {
-      width: 350px;
-    }
-
-    .wrapper-content {
-      padding: 0 50px;
-    }
-
-    .content-code-order {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
     .button {
       height: 32px;
       background-color: #02bc6d;
@@ -62,53 +28,94 @@
       border: none;
       padding: 0 16px;
     }
-
-    .qrcode-content {
-      margin-top: 40px;
-      display: flex;
-      justify-content: center;
-    }
   </style>
 </head>
 
-<body>
-  <div class="wrapper">
-    <div class="logo-header-wrapper">
-      <img src="https://i.imgur.com/eJ6YPb3.jpg" alt="logo da locality" class="logo-header" width="600px"
-        height="150px" />
-    </div>
-    <div class="wrapper-content">
-      <h1>Olá,</h1>
-      <p>
-        Seu pedido foi cadastrado em nossa transportadora, você poderá ver
-        onde o seu pedido se encontra através da nossa plataforma.
-      </p>
-      <div class="content-code-order">
-        <p>
-          Código do seu pedido
-        </p>
-        <h1 style="margin: 0;">{{ id }}</h1>
-      </div>
-      <div style="margin-top: 30px;">
-        <p>
-          Para saber onde se encontra seu pedido, basta copiar o
-          <strong>código do seu pedido</strong> e acessar nossa plataforma, ou
-          clique no botão abaixo.
-        </p>
-      </div>
-      <div style="display: flex; justify-content: center; margin-top: 30px;">
-        <a href="http://www.google.com.br/{{ id }}" style="color: currentColor; text-decoration: none">
-          <button class="button">Acessar plataforma</button>
-        </a>
-      </div>
-      <p style="margin-top: 30px;">
-        Ou acesse pelo seu smartphone utilizando o QRCode abaixo.
-      </p>
-      <div class="qrcode-content">
-        <img src="{{ qrcode }}" alt="QRCode" style="width: 100px;" />
-      </div>
-    </div>
-  </div>
+<body style="margin: 0; padding: 0; background-color: #f4f4f4">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="height: 100%">
+    <tr>
+      <td>
+        <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+          <tr>
+            <td>
+              <table align="center" border="0" cellpadding="0" cellspacing="0" width="600"
+                style="background-color: #ffffff">
+                <tr>
+                  <td>
+                    <img src="https://i.imgur.com/eJ6YPb3.jpg" alt="logo da locality"
+                      style="height: 150px; width: 370px" />
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 0 50px;">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                      <tr>
+                        <td>
+                          <h1>Olá,</h1>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p>
+                            Seu pedido foi cadastrado,
+                            você poderá ver onde o seu pedido se encontra
+                            através da nossa plataforma.
+                          </p>
+                        </td>
+                      </tr>
+                      <tr align="center">
+                        <td>
+                          <p style="margin-top: 30px;">
+                            Código do seu pedido
+                          </p>
+                        </td>
+                      </tr>
+                      <tr align="center">
+                        <td>
+                          <h1 style="margin: 0;">{{ id }}</h1>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p style="margin: 30px 0;">
+                            Para saber onde se encontra seu pedido, basta
+                            copiar o
+                            <strong>código do seu pedido</strong> e acessar
+                            nossa plataforma, ou clique no botão abaixo.
+                          </p>
+                        </td>
+                      </tr>
+                      <tr align="center">
+                        <td>
+                          <a href="http://www.google.com.br/{{ id }}"
+                            style="color: currentColor; text-decoration: none">
+                            <button class="button">Acessar plataforma</button>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p style="margin: 30px 0;">
+                            Ou acesse pelo seu smartphone utilizando o QRCode
+                            abaixo.
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <img src="{{ qrcode }}" alt="QRCode" style="width: 100px; margin-bottom: 30px;" />
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
 </body>
 
 </html>

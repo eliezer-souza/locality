@@ -130,9 +130,7 @@ export class LocationHandler implements ILocationHandler {
       const { idOrder, recipientEmail } = order;
       const baseUrl = process.env.BASE_URL_APP;
 
-      const qrcode = await this._qrcodeService.generate(
-        `${baseUrl}${Object.values(idOrder)}`,
-      );
+      const qrcode = await this._qrcodeService.generate(`${baseUrl}${idOrder}`);
 
       await this._emailService.send(
         recipientEmail,
