@@ -1,16 +1,17 @@
 import { httpStatusCode } from 'api/constants/http.constant';
 import { CreateOrderCommand } from 'domain/order/commands/create-order.command';
-import { IOrderHandler } from 'domain/order/handlers/iorder-handler.interface';
+import { IOrderCommandHandler } from 'domain/order/handlers/commands/iorder-command-handler.interface';
 import { NextFunction, Request, Response } from 'express';
 import { Identifier } from 'infra/cross-cutting/identifiers';
 import { autoInjectable, inject } from 'tsyringe';
 
 @autoInjectable()
 export class OrderController {
-  private readonly _orderHandler: IOrderHandler;
+  private readonly _orderHandler: IOrderCommandHandler;
 
   constructor(
-    @inject(Identifier.ORDER_HANDLER) private orderHandler?: IOrderHandler,
+    @inject(Identifier.ORDER_COMMAND_HANDLER)
+    private orderHandler?: IOrderCommandHandler,
   ) {
     this._orderHandler = orderHandler;
   }

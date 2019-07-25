@@ -1,7 +1,7 @@
 import { CreateLocationCommand } from 'domain/location/commands/create-location.command';
 import { UpdateCurrentPlaceCommand } from 'domain/location/commands/update-current-place.command';
 import { Location } from 'domain/location/entities/location.entity';
-import { ILocationHandler } from 'domain/location/handlers/ilocation-handler.interface';
+import { ILocationCommandHandler } from 'domain/location/handlers/commands/ilocation-command-handler.interface';
 import { ILocationRepository } from 'domain/location/repositories/ilocation.repository';
 import { Place } from 'domain/location/value-objects/place.value-object';
 import { Identifier } from 'infra/cross-cutting/identifiers';
@@ -13,7 +13,7 @@ import { autoInjectable, inject, singleton } from 'tsyringe';
 
 @singleton()
 @autoInjectable()
-export class LocationHandler implements ILocationHandler {
+export class LocationCommandHandler implements ILocationCommandHandler {
   private readonly _locationRepository: ILocationRepository;
   private readonly _emailService: IEmailService;
   private readonly _qrcodeService: IQRCodeService;

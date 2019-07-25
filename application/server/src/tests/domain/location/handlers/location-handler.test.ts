@@ -2,7 +2,7 @@ import 'reflect-metadata';
 
 import { CreateLocationCommand } from 'domain/location/commands/create-location.command';
 import { UpdateCurrentPlaceCommand } from 'domain/location/commands/update-current-place.command';
-import { LocationHandler } from 'domain/location/handlers/location.handler';
+import { LocationCommandHandler } from 'domain/location/handlers/commands/location-command.handler';
 
 import { FakeEmailService } from '../../../mocks/services/email-service.mock';
 import { FakeQRCodeService } from '../../../mocks/services/qrcode-service.mock';
@@ -10,7 +10,7 @@ import { FakeLocationRepository } from '../mocks/location-repository.mock';
 
 describe('test of handler location', () => {
   it('should be created location with success', async () => {
-    const handler = new LocationHandler(
+    const handler = new LocationCommandHandler(
       new FakeLocationRepository(),
       new FakeEmailService(),
       new FakeQRCodeService(),
@@ -35,7 +35,7 @@ describe('test of handler location', () => {
   });
 
   it('should not create successfully because idOrder already exists', async () => {
-    const handler = new LocationHandler(
+    const handler = new LocationCommandHandler(
       new FakeLocationRepository(),
       new FakeEmailService(),
       new FakeQRCodeService(),
@@ -60,7 +60,7 @@ describe('test of handler location', () => {
   });
 
   it('should be updated current place with success', async () => {
-    const handler = new LocationHandler(
+    const handler = new LocationCommandHandler(
       new FakeLocationRepository(),
       new FakeEmailService(),
       new FakeQRCodeService(),

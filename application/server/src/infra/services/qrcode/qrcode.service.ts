@@ -1,5 +1,5 @@
 import qr from 'qrcode';
-import { IQRCodeService } from 'src/shared/services/iqrcode.service';
+import { IQRCodeService } from 'shared/services/iqrcode.service';
 import { singleton } from 'tsyringe';
 
 @singleton()

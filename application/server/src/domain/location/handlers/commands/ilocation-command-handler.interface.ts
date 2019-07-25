@@ -2,7 +2,7 @@ import { CreateLocationCommand } from 'domain/location/commands/create-location.
 import { UpdateCurrentPlaceCommand } from 'domain/location/commands/update-current-place.command';
 import { IResponse } from 'shared/interfaces/response';
 
-export interface ILocationHandler {
+export interface ILocationCommandHandler {
   createLocationHandle: (command: CreateLocationCommand) => Promise<IResponse>;
   updateCurrentPlaceHandle: (
     command: UpdateCurrentPlaceCommand,

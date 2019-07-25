@@ -1,6 +1,6 @@
 import { CreateOrderCommand } from 'domain/order/commands/create-order.command';
 import { Order } from 'domain/order/entities/order.entity';
-import { IOrderHandler } from 'domain/order/handlers/iorder-handler.interface';
+import { IOrderCommandHandler } from 'domain/order/handlers/commands/iorder-command-handler.interface';
 import { IOrderRepository } from 'domain/order/repositories/iorder.repository';
 import { Email } from 'domain/order/value-objects/email.value-object';
 import { Status } from 'domain/order/value-objects/status.value-object';
@@ -13,7 +13,7 @@ import { autoInjectable, inject, singleton } from 'tsyringe';
 
 @singleton()
 @autoInjectable()
-export class OrderHandler implements IOrderHandler {
+export class OrderCommandHandler implements IOrderCommandHandler {
   private readonly _orderRepository: IOrderRepository;
   private readonly _emailService: IEmailService;
   private readonly _qrcodeService: IQRCodeService;

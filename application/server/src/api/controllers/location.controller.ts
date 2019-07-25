@@ -1,18 +1,18 @@
 import { httpStatusCode } from 'api/constants/http.constant';
 import { CreateLocationCommand } from 'domain/location/commands/create-location.command';
 import { UpdateCurrentPlaceCommand } from 'domain/location/commands/update-current-place.command';
-import { ILocationHandler } from 'domain/location/handlers/ilocation-handler.interface';
+import { ILocationCommandHandler } from 'domain/location/handlers/commands/ilocation-command-handler.interface';
 import { NextFunction, Request, Response } from 'express';
 import { Identifier } from 'infra/cross-cutting/identifiers';
 import { autoInjectable, inject } from 'tsyringe';
 
 @autoInjectable()
 export class LocationController {
-  private readonly _locationHandler: ILocationHandler;
+  private readonly _locationHandler: ILocationCommandHandler;
 
   constructor(
-    @inject(Identifier.LOCATION_HANDLER)
-    private locationHandler?: ILocationHandler,
+    @inject(Identifier.LOCATION_COMMAND_HANDLER)
+    private locationHandler?: ILocationCommandHandler,
   ) {
     this._locationHandler = locationHandler;
   }

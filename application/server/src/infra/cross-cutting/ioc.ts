@@ -6,12 +6,12 @@ import { QRCodeService } from 'infra/services/qrcode/qrcode.service';
 
 import { OrderController } from 'api/controllers/order.controller';
 import { OrderRouter } from 'api/routes/order.router';
-import { OrderHandler } from 'domain/order/handlers/order.handler';
+import { OrderCommandHandler } from 'domain/order/handlers/commands/order-command.handler';
 import { OrderRepository } from 'infra/data/order/repositories/order.repository';
 
 import { LocationController } from 'api/controllers/location.controller';
 import { LocationRouter } from 'api/routes/location.router';
-import { LocationHandler } from 'domain/location/handlers/location.handler';
+import { LocationCommandHandler } from 'domain/location/handlers/commands/location-command.handler';
 import { LocationRepository } from 'infra/data/location/repositories/location.repository';
 
 export async function registeringDependencies() {
@@ -30,8 +30,8 @@ export async function registeringDependencies() {
     useClass: OrderRepository,
   });
 
-  await container.register(Identifier.ORDER_HANDLER, {
-    useClass: OrderHandler,
+  await container.register(Identifier.ORDER_COMMAND_HANDLER, {
+    useClass: OrderCommandHandler,
   });
 
   await container.register(Identifier.ORDER_CONTROLLER, {
@@ -47,8 +47,8 @@ export async function registeringDependencies() {
     useClass: LocationRepository,
   });
 
-  await container.register(Identifier.LOCATION_HANDLER, {
-    useClass: LocationHandler,
+  await container.register(Identifier.LOCATION_COMMAND_HANDLER, {
+    useClass: LocationCommandHandler,
   });
 
   await container.register(Identifier.LOCATION_CONTROLLER, {
