@@ -1,5 +1,6 @@
 import { IOrder } from 'domain/order/entities/iorder-entity.interface';
 import { IOrderRepository } from 'domain/order/repositories/iorder.repository';
+import { LocationSchema } from 'infra/data/location/schemas/location.schema';
 import { OrderSchema } from 'infra/data/order/schemas/order.schema';
 import { IResponse } from 'shared/interfaces/response';
 import { singleton } from 'tsyringe';
@@ -35,6 +36,25 @@ export class OrderRepository implements IOrderRepository {
       return {
         success: true,
         data: { id, code, description, recipientEmail, deliveryDate, status },
+      };
+    } catch (error) {
+      return { success: false, message: error };
+    }
+  }
+
+  public async getLocationsByOrder(idOrder: string): Promise<IResponse> {
+    try {
+      const {
+        id,
+        currentPlace,
+        originPlace,
+        destinationPlace,
+        history,
+      }: any = await LocationSchema.findOne({ idOrder });
+
+      return {
+        success: true,
+        data: { id, currentPlace, originPlace, destinationPlace, history },
       };
     } catch (error) {
       return { success: false, message: error };

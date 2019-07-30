@@ -3,6 +3,7 @@ import { CreateOrderCommand } from 'domain/order/commands/create-order.command';
 import { IOrderCommandHandler } from 'domain/order/handlers/commands/iorder-command-handler.interface';
 import { IOrderQueryHandler } from 'domain/order/handlers/queries/iorder-query-handler.interface';
 import { InfoOrderQuery } from 'domain/order/queries/info-order.query';
+import { LocationsOrderQuery } from 'domain/order/queries/locations-order';
 import { NextFunction, Request, Response } from 'express';
 import { Identifier } from 'infra/cross-cutting/identifiers';
 import { autoInjectable, inject } from 'tsyringe';
@@ -74,6 +75,30 @@ export class OrderController {
       }
 
       return response.status(httpStatusCode.OK).send(infoOrder);
+    } catch (error) {
+      return next(error);
+    }
+  };
+
+  locationsOrder = async (
+    request: Request,
+    response: Response,
+    next: NextFunction,
+  ): Promise<void | Response> => {
+    try {
+      const { id } = request.params;
+
+      const query = new LocationsOrderQuery(id);
+
+      const locationsOrder = await this._orderQueryHandler.locationsOrderHandle(
+        query,
+      );
+
+      if (!locationsOrder.success) {
+        return response.status(httpStatusCode.NOT_FOUND).send(locationsOrder);
+      }
+
+      return response.status(httpStatusCode.OK).send(locationsOrder);
     } catch (error) {
       return next(error);
     }

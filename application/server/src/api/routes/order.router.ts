@@ -22,5 +22,6 @@ export class OrderRouter {
   private registeringRoutes() {
     this.router.post('/', this.controller.create);
     this.router.get('/:id', this.controller.infoOrder);
+    this.router.get('/:id/locations', this.controller.locationsOrder);
   }
 }

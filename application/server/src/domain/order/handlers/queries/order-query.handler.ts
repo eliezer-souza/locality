@@ -1,5 +1,6 @@
 import { IOrderQueryHandler } from 'domain/order/handlers/queries/iorder-query-handler.interface';
 import { InfoOrderQuery } from 'domain/order/queries/info-order.query';
+import { LocationsOrderQuery } from 'domain/order/queries/locations-order';
 import { IOrderRepository } from 'domain/order/repositories/iorder.repository';
 import { Identifier } from 'infra/cross-cutting/identifiers';
 import { CommandResult } from 'shared/interfaces/command-result';
@@ -26,5 +27,17 @@ export class OrderQueryHandler implements IOrderQueryHandler {
     }
 
     return new CommandResult(true, 'Informations of order', response.data);
+  }
+
+  public async locationsOrderHandle(
+    query: LocationsOrderQuery,
+  ): Promise<IResponse> {
+    const response = await this._orderRepository.getLocationsByOrder(query.id);
+
+    if (!response.success) {
+      return new CommandResult(false, response.message);
+    }
+
+    return new CommandResult(true, 'Locations of order', response.data);
   }
 }
