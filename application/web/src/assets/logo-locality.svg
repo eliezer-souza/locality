@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="185.95" height="58.895" viewBox="0 0 185.95 58.895">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="185.95" height="58.895" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="locality_1x" data-name="locality@1x" clip-path="url(#clip-path)">
+    <path id="Forma_1_copiar" data-name="Forma 1 copiar" d="M317.977,463.932l17.755,21.634L353.4,463.932Z" transform="translate(-311.685 -426.671)" fill="#05897a" fill-rule="evenodd"/>
+    <circle id="Elipse_1" data-name="Elipse 1" cx="23.946" cy="23.946" r="23.946" fill="#02bc6d"/>
+    <circle id="Elipse_2_copiar" data-name="Elipse 2 copiar" cx="7.692" cy="7.692" r="7.692" transform="translate(16.312 16.079)" fill="#fff"/>
+    <text id="locality" transform="translate(55.935 41.16)" fill="#333" font-size="33" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">locality</tspan></text>
+  </g>
+</svg>
