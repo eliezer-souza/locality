@@ -10,7 +10,8 @@
     "react-router-dom": "5.0.1",
     "react-scripts": "3.0.1",
     "styled-components": "4.3.2",
-    "styled-tools": "1.7.1"
+    "styled-tools": "1.7.1",
+    "yup": "^0.27.0"
   },
   "scripts": {
     "start": "react-scripts start",

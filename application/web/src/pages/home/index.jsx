@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Content, Header, Image } from './style';
-import { GenericTemplate } from '../../templates';
+
 import { Button, Label, Title, Space } from '../../components';
+import { GenericTemplate } from '../../templates';
 import Logo from '../../assets/logo-locality.svg';
 
-const Home = () => (
+const Home = React.memo(() => (
   <GenericTemplate>
     <Header>
       <Image src={Logo} alt="Logo da locality" />
@@ -26,6 +27,6 @@ const Home = () => (
       </Link>
     </Content>
   </GenericTemplate>
-);
+));
 
 export default Home;

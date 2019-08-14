@@ -38,6 +38,7 @@ export const Image = styled.img`
   }
 `;
 
-export const ActionsWrapper = styled.div`
-  width: 300px;
+export const FormWrapper = styled.div`
+  width: 100%;
+  max-width: 500px;
 `;
