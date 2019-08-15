@@ -22,7 +22,7 @@ const Home = React.memo(() => (
         cliente precisa saber sobre o rastreamento de sua encomenda.
       </Label>
       <Space size="20px" />
-      <Link to="/track" className="link">
+      <Link to="/search" className="link">
         <Button size="large">Começar</Button>
       </Link>
     </Content>

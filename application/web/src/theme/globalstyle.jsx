@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
   #root {
     display: flex;
     justify-content: center;
-    padding: 50px 0;
+    /* padding: 50px 0; */
   }
 
   body {

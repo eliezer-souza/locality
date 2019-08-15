@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import { Button, Field, Space } from '../../components';
 import { FormWrapper } from './style';
 
-const TrackForm = React.memo(
+const SearchForm = React.memo(
   ({
     errors,
     isSubmitting,
@@ -41,7 +41,7 @@ const TrackForm = React.memo(
   ),
 );
 
-TrackForm.propTypes = {
+SearchForm.propTypes = {
   errors: PropTypes.shape({
     trackId: PropTypes.string,
   }).isRequired,
@@ -58,7 +58,7 @@ TrackForm.propTypes = {
   isValid: PropTypes.bool.isRequired,
 };
 
-const FormikHoc = withFormik({
+const SearchFormHoc = withFormik({
   mapPropsToValues: () => ({ trackId: '' }),
 
   validationSchema: Yup.object().shape({
@@ -77,6 +77,6 @@ const FormikHoc = withFormik({
     push(`/track/${values.trackId}`);
     setSubmitting(false);
   },
-})(TrackForm);
+})(SearchForm);
 
-export default withRouter(FormikHoc);
+export default withRouter(SearchFormHoc);

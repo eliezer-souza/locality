@@ -1,3 +1,4 @@
 import GenericTemplate from './generic';
+import PlatformTemplate from './platform';
 
-export { GenericTemplate };
+export { GenericTemplate, PlatformTemplate };
